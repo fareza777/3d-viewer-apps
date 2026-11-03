@@ -21,6 +21,7 @@ import com.studio3dpro.app.ui.StudioColors
 import com.studio3dpro.app.ui.StudioScreen
 import com.studio3dpro.app.ui.StudioTheme
 import com.studio3dpro.app.ads.AdsManager
+import com.studio3dpro.app.ads.ConsentManager
 import com.studio3dpro.app.billing.RemoveAdsBilling
 
 class MainActivity : ComponentActivity() {
@@ -36,7 +37,8 @@ class MainActivity : ComponentActivity() {
         // Ads and billing both need the Activity; starting them here means the
         // first banner and the remove-ads price are ready by the time the
         // studio draws.
-        AdsManager.init(this)
+        // Ads start only after UMP consent allows ad requests.
+        ConsentManager.gather(this) { AdsManager.init(this) }
         RemoveAdsBilling.ensureStarted(this)
         pendingImport = intent?.data
         enableEdgeToEdge()

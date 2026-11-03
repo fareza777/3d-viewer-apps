@@ -1,5 +1,7 @@
 package com.studio3dpro.app.ads
 
+import com.studio3dpro.app.BuildConfig
+
 /**
  * Single place for every monetization id so the release build only needs one
  * edit (plus the AdMob app id in the manifest) before publishing.
@@ -13,11 +15,15 @@ object AdConfig {
 
     // AdMob app id — must match the com.google.android.gms.ads.APPLICATION_ID
     // meta-data in AndroidManifest.xml.
-    const val ADMOB_APP_ID = "ca-app-pub-3940256099942544~3347511713"
+    // Ids come from BuildConfig: Google test units for debug, real units for release
+    // (see app/build.gradle.kts buildTypes).
+    const val ADMOB_APP_ID = BuildConfig.ADMOB_APP_ID
 
-    const val BANNER_UNIT_ID = "ca-app-pub-3940256099942544/9214589741"
-    const val INTERSTITIAL_UNIT_ID = "ca-app-pub-3940256099942544/1033173712"
-    const val REWARDED_UNIT_ID = "ca-app-pub-3940256099942544/5224354917"
+    const val BANNER_UNIT_ID = BuildConfig.ADMOB_BANNER_ID
+    const val INTERSTITIAL_UNIT_ID = BuildConfig.ADMOB_INTERSTITIAL_ID
+    const val REWARDED_UNIT_ID = BuildConfig.ADMOB_REWARDED_ID
+
+    const val PRIVACY_POLICY_URL = "https://fareza777.github.io/studio3dpro/privacy-policy.html"
 
     /** True while the ids above are still Google's test units. */
     val usingTestUnits: Boolean = ADMOB_APP_ID.startsWith("ca-app-pub-3940256099942544")

@@ -33,6 +33,8 @@ import androidx.compose.material.icons.rounded.PlayArrow
 import androidx.compose.material.icons.rounded.Refresh
 import androidx.compose.material.icons.rounded.RestartAlt
 import androidx.compose.material.icons.rounded.Shield
+import androidx.compose.material.icons.rounded.Policy
+import androidx.compose.material.icons.rounded.PrivacyTip
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -53,7 +55,9 @@ import com.studio3dpro.app.SceneFormat
 import com.studio3dpro.app.StudioPreferences
 import com.studio3dpro.app.StudioViewModel
 import com.studio3dpro.app.ThemeMode
+import com.studio3dpro.app.ads.AdConfig
 import com.studio3dpro.app.ads.AdsManager
+import com.studio3dpro.app.ads.ConsentManager
 import com.studio3dpro.app.ads.findActivity
 import com.studio3dpro.app.ads.rememberAdFreeClock
 import com.studio3dpro.app.billing.RemoveAdsBilling
@@ -327,10 +331,33 @@ fun SettingsScreen(vm: StudioViewModel, onClose: () -> Unit) {
                     Icon(Icons.Rounded.Shield, null, tint = StudioColors.Mint, modifier = Modifier.size(17.dp))
                     Spacer(Modifier.width(9.dp))
                     Text(
-                        "Your scenes stay on this device. No account, no cloud upload and no analytics. Exports are written only to the folder you choose.",
+                        "Your scenes stay on this device. No account, no cloud upload and no analytics. Ads are served by Google AdMob with your consent. Exports are written only to the folder you choose.",
                         style = MaterialTheme.typography.bodySmall,
                         color = StudioColors.TextSecondary
                     )
+                }
+                Spacer(Modifier.height(10.dp))
+                SettingsAction(
+                    icon = Icons.Rounded.Policy,
+                    title = "Privacy policy",
+                    subtitle = "fareza777.github.io/studio3dpro"
+                ) {
+                    runCatching {
+                        context.startActivity(
+                            android.content.Intent(
+                                android.content.Intent.ACTION_VIEW,
+                                android.net.Uri.parse(AdConfig.PRIVACY_POLICY_URL)
+                            )
+                        )
+                    }
+                }
+                if (ConsentManager.privacyOptionsRequired && activity != null) {
+                    Hairline(Modifier.padding(vertical = 5.dp))
+                    SettingsAction(
+                        icon = Icons.Rounded.PrivacyTip,
+                        title = "Privacy options",
+                        subtitle = "Review or change your ad consent choices"
+                    ) { ConsentManager.showPrivacyOptions(activity) }
                 }
                 Spacer(Modifier.height(10.dp))
                 Row(verticalAlignment = Alignment.Top) {

@@ -3,7 +3,7 @@
 **Last updated:** 29 October 2026  
 **Applies to:** 3D Studio Pro for Android, package `com.studio3dpro.app`, version 1.0.0
 
-> This is a policy template for the app as shipped. Replace the bracketed contact and host it at a public HTTPS URL before submitting to Google Play. Do not claim data collection that the app does not perform, and update it if you add analytics, crash reporting, cloud sync or ads later.
+> Hosted version: https://fareza777.github.io/studio3dpro/privacy-policy.html
 
 ## Summary
 
@@ -12,6 +12,7 @@
 The app does contain advertising and an optional in-app purchase, which are the only reasons it uses the network:
 
 - **Advertising.** Banners, interstitials and opt-in rewarded ads are served by Google AdMob. To serve and measure ads, Google may collect device and advertising identifiers, approximate location derived from IP, and ad interaction data, under the [Google privacy policy](https://policies.google.com/privacy). Scenes and files are not shared with the ad SDK.
+- **Consent.** Where required (EEA, UK, Switzerland, some US states) a Google User Messaging Platform (UMP) consent message is shown before any ad is requested; ads load only once consent allows it. Choices can be changed in Settings > About > Privacy options.
 - **Purchases.** The one-time "Remove ads" product ($4.99) is processed by Google Play Billing. The app receives only whether the product is owned; it never sees your payment details.
 
 Buying "Remove ads" stops ad requests from the app. You can also watch a rewarded ad to pause banner and interstitial ads for 30 minutes.
@@ -61,9 +62,8 @@ If a future version adds cloud sync, analytics or crash reporting, this policy w
 
 ## Contact
 
-Questions about this policy: **[your support email]**  
-Developer: **[your developer name]**  
-Address: **[optional postal address]**
+Questions about this policy: **fajar.mreza@gmail.com**  
+Developer: **F7 Developer**  
 
 ---
 
@@ -86,4 +86,4 @@ Anda dapat menghapus proyek melalui kontrol proyek di aplikasi, atau menghapus s
 
 Jika Anda mengaktifkan cadangan Android, sistem dapat menyertakan file proyek privat dalam cadangan akun Google sesuai pengaturan perangkat Anda. Cadangan tersebut dikendalikan oleh Android dan akun Google Anda, bukan oleh aplikasi ini.
 
-Pertanyaan: **[email dukungan Anda]**
+Pertanyaan: **fajar.mreza@gmail.com** (F7 Developer)

@@ -38,6 +38,12 @@ android {
 
     buildTypes {
         release {
+            // Real AdMob ids (release only).
+            manifestPlaceholders["admobAppId"] = "ca-app-pub-6279186647593327~2261520531"
+            buildConfigField("String", "ADMOB_APP_ID", "\"ca-app-pub-6279186647593327~2261520531\"")
+            buildConfigField("String", "ADMOB_BANNER_ID", "\"ca-app-pub-6279186647593327/2607958715\"")
+            buildConfigField("String", "ADMOB_INTERSTITIAL_ID", "\"ca-app-pub-6279186647593327/9334642453\"")
+            buildConfigField("String", "ADMOB_REWARDED_ID", "\"ca-app-pub-6279186647593327/6148794657\"")
             isMinifyEnabled = true
             isShrinkResources = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
@@ -46,6 +52,12 @@ android {
             }
         }
         debug {
+            // Google test AdMob ids (debug only).
+            manifestPlaceholders["admobAppId"] = "ca-app-pub-3940256099942544~3347511713"
+            buildConfigField("String", "ADMOB_APP_ID", "\"ca-app-pub-3940256099942544~3347511713\"")
+            buildConfigField("String", "ADMOB_BANNER_ID", "\"ca-app-pub-3940256099942544/9214589741\"")
+            buildConfigField("String", "ADMOB_INTERSTITIAL_ID", "\"ca-app-pub-3940256099942544/1033173712\"")
+            buildConfigField("String", "ADMOB_REWARDED_ID", "\"ca-app-pub-3940256099942544/5224354917\"")
             applicationIdSuffix = ".debug"
             versionNameSuffix = "-debug"
         }
@@ -94,6 +106,8 @@ dependencies {
     // "Remove ads" in-app product.
     implementation("com.google.android.gms:play-services-ads:23.6.0")
     implementation("com.android.billingclient:billing:7.1.1")
+    // Google UMP consent (GDPR / US states) before any ad request.
+    implementation("com.google.android.ump:user-messaging-platform:3.2.0")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.2.1")

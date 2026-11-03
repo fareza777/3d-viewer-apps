@@ -14,7 +14,7 @@ This is the release runbook for `com.studio3dpro.app`. The signed artifacts in `
 | AAB | `release/3DStudioPro-1.0.0.aab` (4.2 MB) |
 | Native ABIs | `arm64-v8a`, `armeabi-v7a`, `x86`, `x86_64` — only AndroidX `libandroidx.graphics.path.so`; all app logic is Kotlin/Java |
 | Required hardware | OpenGL ES 3.0 (`<uses-feature android:glEsVersion="0x00030000" android:required="true">`) |
-| Permissions | none (no INTERNET, storage, camera or location) |
+| Permissions | INTERNET, ACCESS_NETWORK_STATE (ads and billing), VIBRATE (haptics); no storage, camera or location |
 | Signing cert SHA-256 | `73:1b:88:b0:ec:5f:e5:9d:0d:a3:5e:4f:b5:bd:19:c8:23:de:73:4c:36:eb:47:04:d8:ad:60:07:75:e3:2f:b7` |
 
 Verify before every upload:

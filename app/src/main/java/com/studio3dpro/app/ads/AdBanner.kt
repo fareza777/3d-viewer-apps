@@ -47,7 +47,7 @@ fun AdBannerSlot(modifier: Modifier = Modifier) {
     val boostUntil = StudioPreferences.adFreeUntilMillis
     val now = rememberAdFreeClock()
 
-    if (removed || now < boostUntil) return
+    if (removed || now < boostUntil || !AdsManager.ready) return
 
     val context = LocalContext.current
     BoxWithConstraints(
