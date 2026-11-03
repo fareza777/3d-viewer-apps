@@ -20,8 +20,8 @@ android {
         applicationId = "com.studio3dpro.app"
         minSdk = 28
         targetSdk = 36
-        versionCode = 1
-        versionName = "1.0.0"
+        versionCode = 2
+        versionName = "1.0.1"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -105,7 +105,7 @@ dependencies {
     // Monetization: AdMob (banner / interstitial / rewarded) and the one-time
     // "Remove ads" in-app product.
     implementation("com.google.android.gms:play-services-ads:23.6.0")
-    implementation("com.android.billingclient:billing:7.1.1")
+    implementation("com.android.billingclient:billing:8.3.0")
     // Google UMP consent (GDPR / US states) before any ad request.
     implementation("com.google.android.ump:user-messaging-platform:3.2.0")
 

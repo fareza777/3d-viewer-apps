@@ -11,6 +11,7 @@ import com.android.billingclient.api.BillingClient
 import com.android.billingclient.api.BillingClientStateListener
 import com.android.billingclient.api.BillingFlowParams
 import com.android.billingclient.api.BillingResult
+import com.android.billingclient.api.PendingPurchasesParams
 import com.android.billingclient.api.ProductDetails
 import com.android.billingclient.api.Purchase
 import com.android.billingclient.api.PurchasesUpdatedListener
@@ -67,7 +68,10 @@ object RemoveAdsBilling {
         }
         val billing = BillingClient.newBuilder(context.applicationContext)
             .setListener(listener)
-            .enablePendingPurchases()
+            .enablePendingPurchases(
+                PendingPurchasesParams.newBuilder().enableOneTimeProducts().build()
+            )
+            .enableAutoServiceReconnection()
             .build()
         client = billing
         billing.startConnection(object : BillingClientStateListener {
@@ -106,7 +110,8 @@ object RemoveAdsBilling {
                 )
             )
             .build()
-        billing.queryProductDetailsAsync(params) { result, details ->
+        billing.queryProductDetailsAsync(params) { result, queryResult ->
+            val details = queryResult.productDetailsList
             productQueryDone = true
             if (result.responseCode == BillingClient.BillingResponseCode.OK) {
                 val match = details.firstOrNull { it.productId == AdConfig.REMOVE_ADS_PRODUCT_ID }
@@ -126,7 +131,10 @@ object RemoveAdsBilling {
         billing.queryPurchasesAsync(params) { result, purchases ->
             if (result.responseCode != BillingClient.BillingResponseCode.OK) return@queryPurchasesAsync
             purchases
-                .firstOrNull { it.products.contains(AdConfig.REMOVE_ADS_PRODUCT_ID) }
+                .firstOrNull {
+                    it.products.contains(AdConfig.REMOVE_ADS_PRODUCT_ID) &&
+                        it.purchaseState == Purchase.PurchaseState.PURCHASED
+                }
                 ?.let { purchase ->
                     grantRemoveAds(purchase)
                 }
