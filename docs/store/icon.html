@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<style>
+  html, body { margin: 0; padding: 0; background: #0A0B0F; }
+  #stage { width: 512px; height: 512px; }
+</style>
+</head>
+<body>
+<div id="stage">
+<svg id="icon" width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="38%" r="72%">
+      <stop offset="0%" stop-color="#221A2E" />
+      <stop offset="55%" stop-color="#12111A" />
+      <stop offset="100%" stop-color="#08090C" />
+    </radialGradient>
+    <linearGradient id="top" x1="112" y1="206" x2="400" y2="284" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFC978" />
+      <stop offset="55%" stop-color="#F0A850" />
+      <stop offset="100%" stop-color="#D98A38" />
+    </linearGradient>
+    <linearGradient id="left" x1="112" y1="206" x2="256" y2="428" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#20232C" />
+      <stop offset="100%" stop-color="#14161C" />
+    </linearGradient>
+    <linearGradient id="right" x1="256" y1="284" x2="400" y2="428" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#2C303A" />
+      <stop offset="100%" stop-color="#191C23" />
+    </linearGradient>
+    <linearGradient id="gem" x1="244" y1="270" x2="268" y2="296" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#B6FFF0" />
+      <stop offset="100%" stop-color="#38D9B0" />
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#F0A850" stop-opacity="0.34" />
+      <stop offset="100%" stop-color="#F0A850" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <rect width="512" height="512" fill="url(#bg)" />
+  <circle cx="256" cy="270" r="200" fill="url(#glow)" />
+
+  <!-- orbit -->
+  <g transform="rotate(-18 256 272)">
+    <ellipse cx="256" cy="272" rx="196" ry="76" fill="none" stroke="#8E7BC0" stroke-opacity="0.5" stroke-width="3" />
+    <circle cx="452" cy="272" r="7" fill="#F0A850" />
+  </g>
+
+  <!-- cube shadow -->
+  <ellipse cx="256" cy="444" rx="120" ry="14" fill="#000000" opacity="0.45" />
+
+  <!-- left face -->
+  <path d="M112 206 L256 284 L256 428 L112 350 Z" fill="url(#left)" />
+  <!-- right face -->
+  <path d="M400 206 L256 284 L256 428 L400 350 Z" fill="url(#right)" />
+  <!-- top face -->
+  <path d="M256 128 L400 206 L256 284 L112 206 Z" fill="url(#top)" />
+
+  <!-- bevels -->
+  <path d="M112 206 L256 284 L400 206" fill="none" stroke="#FFDCAC" stroke-opacity="0.55" stroke-width="3" stroke-linejoin="round" />
+  <path d="M112 206 L256 128 L400 206" fill="none" stroke="#FFE3BE" stroke-opacity="0.9" stroke-width="4" stroke-linejoin="round" />
+  <path d="M256 284 L256 428" stroke="#3B4050" stroke-opacity="0.9" stroke-width="3" />
+  <path d="M112 206 L112 350" stroke="#3B4050" stroke-opacity="0.5" stroke-width="2" />
+  <path d="M400 206 L400 350" stroke="#454B5C" stroke-opacity="0.6" stroke-width="2" />
+  <path d="M112 350 L256 428 L400 350" fill="none" stroke="#454B5C" stroke-opacity="0.55" stroke-width="3" stroke-linejoin="round" />
+
+  <!-- accent slats on the right face -->
+  <path d="M300 311 L300 372" stroke="#F0A850" stroke-opacity="0.16" stroke-width="6" stroke-linecap="round" />
+  <path d="M326 311 L326 372" stroke="#F0A850" stroke-opacity="0.09" stroke-width="6" stroke-linecap="round" />
+
+  <!-- joint gem on the front edge -->
+  <path d="M256 258 L276 284 L256 310 L236 284 Z" fill="#0D0F14" />
+  <path d="M256 262 L272 284 L256 306 L240 284 Z" fill="url(#gem)" />
+  <path d="M256 262 L256 306" stroke="#0B3A31" stroke-opacity="0.45" stroke-width="2" />
+</svg>
+</div>
+</body>
+</html>

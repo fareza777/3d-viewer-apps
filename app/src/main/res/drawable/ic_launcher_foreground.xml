@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Left face (lit from upper-left) -->
+    <path
+        android:fillColor="#20232C"
+        android:pathData="M23.8,38.9 L54,55.1 L54,85.9 L23.8,70.8 Z" />
+    <!-- Right face -->
+    <path
+        android:fillColor="#15181F"
+        android:pathData="M54,55.1 L84.2,38.9 L84.2,70.8 L54,85.9 Z" />
+    <!-- Top face -->
+    <path android:pathData="M54,22.6 L84.2,38.9 L54,55.1 L23.8,38.9 Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:type="linear"
+                android:startColor="#FFD08A"
+                android:centerColor="#F0A850"
+                android:endColor="#C97F30"
+                android:angle="315" />
+        </aapt:attr>
+    </path>
+    <!-- Bevel: back edges -->
+    <path
+        android:strokeColor="#FFE3BE"
+        android:strokeWidth="1.2"
+        android:strokeLineJoin="round"
+        android:strokeLineCap="round"
+        android:pathData="M23.8,38.9 L54,22.6 L84.2,38.9" />
+    <!-- Bevel: front top edges -->
+    <path
+        android:strokeColor="#FFDCAC"
+        android:strokeWidth="0.9"
+        android:strokeAlpha="0.55"
+        android:strokeLineJoin="round"
+        android:pathData="M23.8,38.9 L54,55.1 L84.2,38.9" />
+    <!-- Bevel: vertical seam and bottom -->
+    <path
+        android:strokeColor="#3B4050"
+        android:strokeWidth="0.9"
+        android:pathData="M54,55.1 L54,85.9" />
+    <path
+        android:strokeColor="#454B5C"
+        android:strokeWidth="0.9"
+        android:strokeAlpha="0.8"
+        android:strokeLineJoin="round"
+        android:pathData="M23.8,70.8 L54,85.9 L84.2,70.8" />
+
+    <!-- Rig joint gem on the front seam -->
+    <path
+        android:fillColor="#0D0F14"
+        android:pathData="M54,46.2 L61.1,55.1 L54,64 L46.9,55.1 Z" />
+    <path android:pathData="M54,48.2 L58.9,55.1 L54,62 L49.1,55.1 Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:type="linear"
+                android:startColor="#B6FFF0"
+                android:endColor="#38D9B0"
+                android:angle="315" />
+        </aapt:attr>
+    </path>
+    <path
+        android:fillColor="#0B3A31"
+        android:fillAlpha="0.4"
+        android:pathData="M53.6,48.2 L54.4,48.2 L54.4,62 L53.6,62 Z" />
+</vector>

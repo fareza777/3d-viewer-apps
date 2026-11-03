@@ -1,0 +1,144 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<style>
+  @font-face { font-family: "Inter"; src: local("Segoe UI"); }
+  html, body { margin: 0; padding: 0; background: #08090C; }
+  #stage {
+    width: 1024px; height: 500px; position: relative; overflow: hidden;
+    background: radial-gradient(120% 140% at 18% 8%, #2A1F3D 0%, #131019 45%, #08090C 100%);
+    font-family: "Segoe UI", "Inter", system-ui, sans-serif;
+    color: #F4F1EA;
+  }
+  .grain { position: absolute; inset: 0; opacity: 0.5;
+    background-image: radial-gradient(#ffffff10 0.5px, transparent 0.5px);
+    background-size: 3px 3px; }
+  .glow { position: absolute; width: 620px; height: 620px; left: -180px; top: -180px;
+    background: radial-gradient(circle, #F0A85033 0%, #F0A85000 62%); }
+  .grid { position: absolute; inset: 0; opacity: 0.16;
+    background-image: linear-gradient(#B9A7FF22 1px, transparent 1px), linear-gradient(90deg, #B9A7FF22 1px, transparent 1px);
+    background-size: 46px 46px;
+    mask-image: linear-gradient(105deg, transparent 46%, #000 100%);
+    -webkit-mask-image: linear-gradient(105deg, transparent 46%, #000 100%); }
+  .mark { position: absolute; left: 74px; top: 116px; width: 200px; height: 200px; }
+  .copy { position: absolute; left: 306px; top: 132px; width: 470px; }
+  .eyebrow { font-size: 15px; letter-spacing: 4.6px; font-weight: 600; color: #B9A7FF; text-transform: uppercase; }
+  h1 { margin: 12px 0 0 0; font-size: 62px; line-height: 0.95; letter-spacing: -1.6px; font-weight: 800; }
+  h1 .thin { color: #F0A850; }
+  .sub { margin-top: 16px; font-size: 19px; line-height: 1.4; color: #CFC9BF; font-weight: 400; max-width: 440px; }
+  .pills { position: absolute; left: 308px; top: 356px; display: flex; gap: 9px; }
+  .pill { font-size: 13px; letter-spacing: 0.2px; color: #EDE7DC; padding: 8px 13px;
+    border: 1px solid #FFFFFF1F; border-radius: 999px; background: #FFFFFF0A; }
+  .pill b { color: #8BE9D0; font-weight: 600; }
+  .device { position: absolute; right: 54px; top: 46px; width: 196px; height: 420px;
+    border-radius: 30px; border: 1px solid #FFFFFF26;
+    background: linear-gradient(180deg, #17141F 0%, #0C0D12 100%);
+    box-shadow: 0 30px 60px #00000080, inset 0 1px 0 #FFFFFF12; }
+  .device .notch { position: absolute; left: 50%; top: 12px; width: 64px; height: 6px; margin-left: -32px; background: #FFFFFF1A; border-radius: 6px; }
+  .device .hud { position: absolute; left: 14px; top: 30px; font-size: 9px; letter-spacing: 2px; color: #B9A7FF; }
+  .device .fps { position: absolute; right: 14px; top: 30px; font-size: 9px; color: #8BE9D0; letter-spacing: 1px; }
+  .device .floor { position: absolute; left: 22px; right: 22px; bottom: 72px; height: 54px;
+    background: radial-gradient(ellipse at center, #F0A85033 0%, #F0A85000 70%); }
+  .device .timeline { position: absolute; left: 14px; right: 14px; bottom: 62px; height: 30px; }
+  .device .timeline .row { position: relative; height: 8px; margin-bottom: 3px; border-radius: 3px; background: #FFFFFF08; }
+  .device .timeline .row i { position: absolute; top: 2px; width: 4px; height: 4px; background: #B9A7FF; transform: rotate(45deg); }
+  .device .timeline .row i.mint { background: #8BE9D0; }
+  .device .dock { position: absolute; left: 14px; right: 14px; bottom: 16px; height: 40px; border-radius: 12px;
+    background: #FFFFFF0A; border: 1px solid #FFFFFF14; display: flex; align-items: center; justify-content: space-around; }
+  .device .dock span { width: 22px; height: 22px; border-radius: 7px; border: 1px solid #FFFFFF1F; }
+  .device .dock span.on { background: #B9A7FF33; border-color: #B9A7FF88; }
+  .tag { position: absolute; left: 74px; bottom: 36px; font-size: 12px; letter-spacing: 2.4px; color: #FFFFFF66; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div class="glow"></div>
+  <div class="grid"></div>
+  <div class="grain"></div>
+
+  <svg class="mark" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="t" x1="30" y1="46" x2="170" y2="86" gradientUnits="userSpaceOnUse">
+        <stop offset="0%" stop-color="#FFD08A"/><stop offset="55%" stop-color="#F0A850"/><stop offset="100%" stop-color="#C97F30"/>
+      </linearGradient>
+      <linearGradient id="l" x1="30" y1="86" x2="100" y2="160" gradientUnits="userSpaceOnUse">
+        <stop offset="0%" stop-color="#242833"/><stop offset="100%" stop-color="#14171D"/>
+      </linearGradient>
+      <linearGradient id="r" x1="100" y1="86" x2="170" y2="160" gradientUnits="userSpaceOnUse">
+        <stop offset="0%" stop-color="#181B22"/><stop offset="100%" stop-color="#0E1015"/>
+      </linearGradient>
+      <linearGradient id="g" x1="92" y1="92" x2="110" y2="112" gradientUnits="userSpaceOnUse">
+        <stop offset="0%" stop-color="#B6FFF0"/><stop offset="100%" stop-color="#38D9B0"/>
+      </linearGradient>
+    </defs>
+    <ellipse cx="100" cy="170" rx="66" ry="10" fill="#000" opacity="0.5"/>
+    <g transform="rotate(-10 100 110)">
+      <ellipse cx="100" cy="108" rx="92" ry="34" fill="none" stroke="#8E7BC0" stroke-opacity="0.55" stroke-width="1.6"/>
+      <circle cx="192" cy="108" r="4" fill="#F0A850"/>
+    </g>
+    <path d="M30 64 L100 100 L100 158 L30 122 Z" fill="url(#l)"/>
+    <path d="M170 64 L100 100 L100 158 L170 122 Z" fill="url(#r)"/>
+    <path d="M100 28 L170 64 L100 100 L30 64 Z" fill="url(#t)"/>
+    <path d="M30 64 L100 100 L170 64" fill="none" stroke="#FFDCAC" stroke-opacity="0.6" stroke-width="1.4" stroke-linejoin="round"/>
+    <path d="M30 64 L100 28 L170 64" fill="none" stroke="#FFE3BE" stroke-width="2" stroke-linejoin="round"/>
+    <path d="M100 100 L100 158" stroke="#3B4050" stroke-width="1.4"/>
+    <path d="M30 122 L100 158 L170 122" fill="none" stroke="#454B5C" stroke-opacity="0.7" stroke-width="1.4" stroke-linejoin="round"/>
+    <path d="M100 86 L118 106 L100 126 L82 106 Z" fill="#0D0F14"/>
+    <path d="M100 90 L114 106 L100 122 L86 106 Z" fill="url(#g)"/>
+    <path d="M100 90 L100 122" stroke="#0B3A31" stroke-opacity="0.45" stroke-width="1.6"/>
+  </svg>
+
+  <div class="copy">
+    <div class="eyebrow">Android · On-device studio</div>
+    <h1>3D Studio<br><span class="thin">Pro</span></h1>
+    <div class="sub">Model, rig and animate characters on your phone — then export game-ready GLB for Unity and Unreal.</div>
+  </div>
+
+  <div class="pills">
+    <div class="pill"><b>24-bone</b> auto-rig</div>
+    <div class="pill"><b>GLB</b> + skin + clips</div>
+    <div class="pill"><b>Offline</b> · no account</div>
+  </div>
+
+  <div class="device">
+    <div class="notch"></div>
+    <div class="hud">ANIMATE</div>
+    <div class="fps">60 FPS</div>
+    <svg viewBox="0 0 168 300" style="position:absolute;left:14px;top:68px;width:168px;height:300px">
+      <g stroke="#E9E2D6" stroke-opacity="0.9" stroke-width="3" stroke-linecap="round" fill="none">
+        <path d="M84 60 L84 150"/>
+        <path d="M84 150 L68 154 L66 206 L63 250"/>
+        <path d="M84 150 L100 154 L102 206 L105 250"/>
+        <path d="M84 66 L56 70 L48 116 L44 152"/>
+        <path d="M84 66 L112 70 L120 116 L124 152"/>
+      </g>
+      <g stroke="#8BE9D0" stroke-width="5" stroke-linecap="round" fill="none">
+        <path d="M68 154 L66 206"/>
+      </g>
+      <g fill="#F0A850">
+        <circle cx="84" cy="46" r="9" fill="#F0A850" fill-opacity="0.14" stroke="#F0A850" stroke-width="2"/>
+        <circle cx="84" cy="66" r="3.6"/><circle cx="84" cy="150" r="4"/>
+        <circle cx="56" cy="70" r="3"/><circle cx="112" cy="70" r="3"/>
+        <circle cx="68" cy="154" r="3"/><circle cx="100" cy="154" r="3"/>
+      </g>
+      <g fill="#8BE9D0">
+        <circle cx="48" cy="116" r="2.6"/><circle cx="120" cy="116" r="2.6"/>
+        <circle cx="66" cy="206" r="2.6"/><circle cx="102" cy="206" r="2.6"/>
+        <circle cx="44" cy="152" r="2.6"/><circle cx="124" cy="152" r="2.6"/>
+        <circle cx="63" cy="250" r="2.6"/><circle cx="105" cy="250" r="2.6"/>
+      </g>
+    </svg>
+    <div class="floor"></div>
+    <div class="timeline">
+      <div class="row"><i style="left:8px"></i><i style="left:38px"></i><i style="left:68px"></i><i style="left:98px"></i><i style="left:128px"></i></div>
+      <div class="row"><i style="left:20px" class="mint"></i><i style="left:54px" class="mint"></i><i style="left:88px" class="mint"></i><i style="left:122px" class="mint"></i></div>
+      <div class="row"><i style="left:14px"></i><i style="left:60px"></i><i style="left:106px"></i></div>
+    </div>
+    <div class="dock"><span></span><span></span><span></span><span class="on"></span></div>
+  </div>
+
+  <div class="tag">MODEL · RIG · ANIMATE · EXPORT</div>
+</div>
+</body>
+</html>

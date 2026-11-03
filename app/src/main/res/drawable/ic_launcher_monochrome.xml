@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Themed-icon silhouette: cube with a cut-out joint gem. -->
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:fillType="evenOdd"
+        android:pathData="M54,22.6 L84.2,38.9 L84.2,70.8 L54,85.9 L23.8,70.8 L23.8,38.9 Z M54,47 L60.4,55.1 L54,63.2 L47.6,55.1 Z" />
+</vector>

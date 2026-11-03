@@ -1,0 +1,2 @@
+-keep class com.studio3dpro.engine.** { *; }
+-keepattributes *Annotation*
