@@ -159,7 +159,7 @@ FILES
 • Export OBJ, STL, BVH and PNG
 • Undo/redo and autosave
 
-Built for touch: one-finger orbit, two-finger pan, pinch to zoom, and a layout that adapts to phones and tablets. Everything runs offline — no account, ads or tracking.
+Built for touch: one-finger orbit, two-finger pan, pinch to zoom, and a layout that adapts to phones and tablets. All 3D work runs on-device with no account and no cloud upload. Free with ads (Google AdMob, consent-based); a one-time purchase removes ads.
 
 Note: FBX is not supported. Use GLB to move rigs and animation into Unity/Unreal.
 ```
